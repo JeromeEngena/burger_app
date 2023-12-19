@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'header.dart';
 import 'categories.dart';
+import 'hamburgers_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +17,8 @@ class MyApp extends StatelessWidget {
       home: const Hamburger(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: Colors.teal,
+        cardColor: Colors.white,
         appBarTheme: const AppBarTheme(color: Colors.teal, centerTitle: true),
         bottomAppBarTheme: const BottomAppBarTheme(color: Colors.teal),
         floatingActionButtonTheme:
@@ -49,6 +52,7 @@ class _HamburgerState extends State<Hamburger> {
           ),
           const Header(),
           const Categories(),
+          const HamburgersList(),
           SliverList(
               delegate: SliverChildListDelegate([
             const Text(
