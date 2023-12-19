@@ -13,6 +13,15 @@ class _HamburgersListState extends State<HamburgersList> {
   @override
   Widget build(BuildContext context) {
     int items = 10;
+
+    Widget baconImage = Container(
+      height: 110,
+      child: Image.asset("images/bacon_burger.jpg"),
+    );
+    Widget chickenImage = Container(
+      height: 110,
+      child: Image.asset("images/chicken_burger.jpg"),
+    );
     return SliverToBoxAdapter(
       // ignore: sized_box_for_whitespace
       child: Container(
@@ -22,6 +31,7 @@ class _HamburgersListState extends State<HamburgersList> {
             scrollDirection: Axis.horizontal,
             itemCount: items,
             itemBuilder: (context, index) {
+              bool reverse = index.isEven;
               return Stack(
                 // ignore: sized_box_for_whitespace
                 children: [
@@ -32,9 +42,20 @@ class _HamburgersListState extends State<HamburgersList> {
                         left: 20, right: index == items ? 20 : 0),
                     child: GestureDetector(
                       onTap: () {
-                        //TODO NAVIGATOR
+                        // TO-DO: NAVIGATOR
                       },
                       child: Card(
+                        color: Theme.of(context).primaryColor,
+                        elevation: 3,
+                        margin: const EdgeInsets.all(10),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(45),
+                            bottomRight: Radius.circular(15),
+                            topLeft: Radius.circular(45),
+                            topRight: Radius.circular(45),
+                          ),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Column(
@@ -75,6 +96,15 @@ class _HamburgersListState extends State<HamburgersList> {
                       ),
                     ),
                   ),
+                  Positioned(
+                    top: reverse ? 70 : 70,
+                    child: GestureDetector(
+                      onTap: () {
+                        // TO-DO: NAVIGATOR
+                      },
+                      child: reverse ? chickenImage : baconImage,
+                    ),
+                  )
                 ],
               );
             }),
